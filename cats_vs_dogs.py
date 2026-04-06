@@ -8,8 +8,15 @@ import random
 import torch.nn as nn
 import torch.nn.functional as F
 
+print("torch version:", torch.__version__)
+print("torchvision version:", torchvision.__version__)
+print("torch cuda build:", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+if not torch.cuda.is_available():
+    raise RuntimeError("CUDA is not available in this job.")
+
+device = torch.device("cuda")
 print(f"Using device: {device}")
 
 from PIL import Image
@@ -106,7 +113,8 @@ train_indecies = cat_indecies_train + dog_indecies_train
 val_indecies = cat_indecies_val + dog_indecies_val
 
 
-
+train_indecies = train_indecies[:200]
+val_indecies = val_indecies[:50]
 
 from torch.utils.data import Subset
 
