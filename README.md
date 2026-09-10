@@ -4,6 +4,9 @@ A compact PyTorch workflow for training and validating a convolutional neural ne
 
 The project demonstrates the complete mechanics of moving an image-classification experiment from a local script to scheduled CUDA execution: dataset validation, preprocessing, model definition, device transfer, training, validation, checkpointing, environment verification, and batch-job submission.
 
+The experiment intentionally uses a small, balanced subset to validate the complete CUDA/Slurm training workflow while minimizing resource usage on a shared university HPC cluster.
+
+
 > **Project status:** the GPU/Slurm workflow is implemented. The current dataset-subsetting logic requires correction before the classification metrics can be treated as a valid cats-versus-dogs benchmark.
 
 ## What this project demonstrates
